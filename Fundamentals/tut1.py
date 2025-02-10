@@ -125,9 +125,29 @@ print("Random Number 1: ", random_1)
 print("Random Number 2: ", random_2)
 
 # Are they equal ?
-print(random_1, random_2, random_1 == random_2)
+# print(random_1, random_2, random_1 == random_2)
 
 
+# Create two random (and different) tensors. 
+random_3 = tf.random.Generator.from_seed(42)
+random_3 = random_3.normal(shape=(3, 2))
+
+random_4 = tf.random.Generator.from_seed(42)
+random_4 = random_4.normal(shape=(3, 2))
+
+# Check the tensors and see if they are equal. 
+# print(random_3, random_4, random_1 == random_3, random_3 == random_4)
+
+
+#  What if you wanted to shuffle the order of a tensor ?
+# Let's say you working with 15,000 images of cats and dogs and the first 10,000 images of were of cats and the next 5,000 were of dogs. This order could effect how a neural network learns (it may overfit by learning the order of the data), instead, it might be a good idea to move your data around.
+print("# shuffle a tensor (valuable for when we want to shuffle our data)")
+not_shuffled = tf.random.Generator.from_seed(42)
+not_shuffled = not_shuffled.normal(shape=(3, 2))
+
+# Get different results each time. 
+print("Getting an different tensors each time runs: ")
+print(tf.random.shuffle(not_shuffled))
 
 print("\n------------------------------------------------------------")
 
