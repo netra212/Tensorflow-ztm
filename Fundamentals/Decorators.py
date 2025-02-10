@@ -34,8 +34,8 @@ Note: A function name without parenthesis is a reference to a function, while a 
 
 
 # Inner functions. 
-# It is possible to define functions inside other functions. such functions are called inner functions. Here's an example of a function with two inner functions: 
-print("\n----------------------------------------")
+# - It is possible to define functions inside other functions. such functions are called inner functions. Here's an example of a function with two inner functions: 
+print("\n------------------ Inner functions ----------------------")
 def parent():
     print("Printing from parent()")
 
@@ -51,15 +51,43 @@ def parent():
 print(parent())
 
 '''
-Note that the order in which the inner functions are defined does not matter. Like with any other functions, the printing only happens when the inner functions are executed. 
+- Note that the order in which the inner functions are defined does not matter. Like with any other functions, the printing only happens when the inner functions are executed. 
 
-Furthermore, the inner functions aren’t defined until the parent function is called. They’re locally scoped to parent(), meaning they only exist inside the parent() function as local variables. Try calling first_child(), this will thrown an error.
+- Furthermore, the inner functions aren’t defined until the parent function is called. They’re locally scoped to parent(), meaning they only exist inside the parent() function as local variables. Try calling first_child(), this will thrown an error.
 
-Whenever you call parent(), the inner functions first_child() and second_child() are also called. But because of their local scope, they aren’t available outside of the parent() function
+- Whenever you call parent(), the inner functions first_child() and second_child() are also called. But because of their local scope, they aren’t available outside of the parent() function.
 '''
 
 # Functions as Return Values:
-print("------------ Functions as Return Values ------------")
+print("\n\n------------ Functions as Return Values ------------")
 '''
-Python allows us to return functions from functions. 
+- Python allows us to return functions from functions. 
+'''
+def parent(num):
+    def first_child():
+        return "Hi, I am Netra kc"
+    
+    def second_child():
+        return "Call me Yagya"
+    
+    if num == 1:
+        return first_child
+    else:
+        return second_child
+    
+print(parent(2))
+
+'''
+- Note that we’re returning first_child without the parentheses. Recall that this means that we’re returning a reference to the function first_child. In contrast, first_child() with parentheses refers to the result of evaluating the function.
+'''
+
+first = parent(1)
+second = parent(2)
+
+'''
+- The somewhat cryptic output means that the first variable refers to the local first_child() function inside of parent(), while second points to second_child().
+
+- We can now use first and second as if they’re regular functions, even though you can’t directly access the functions they point to:
+
+- We recognize the return values of the inner functions that you defined inside of parent().
 '''
