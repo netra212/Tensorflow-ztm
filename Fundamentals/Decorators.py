@@ -47,9 +47,19 @@ def parent():
 
     second_child()
     first_child()
-    
+
 print(parent())
 
 '''
 Note that the order in which the inner functions are defined does not matter. Like with any other functions, the printing only happens when the inner functions are executed. 
+
+Furthermore, the inner functions aren’t defined until the parent function is called. They’re locally scoped to parent(), meaning they only exist inside the parent() function as local variables. Try calling first_child(), this will thrown an error.
+
+Whenever you call parent(), the inner functions first_child() and second_child() are also called. But because of their local scope, they aren’t available outside of the parent() function
+'''
+
+# Functions as Return Values:
+print("------------ Functions as Return Values ------------")
+'''
+Python allows us to return functions from functions. 
 '''
