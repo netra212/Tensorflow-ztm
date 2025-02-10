@@ -31,3 +31,25 @@ print(greet_bob(be_awesome))
 '''
 Note: A function name without parenthesis is a reference to a function, while a function name with trailing parenthesis calls the function and refers to its return value. 
 '''
+
+
+# Inner functions. 
+# It is possible to define functions inside other functions. such functions are called inner functions. Here's an example of a function with two inner functions: 
+print("\n----------------------------------------")
+def parent():
+    print("Printing from parent()")
+
+    def first_child():
+        print("Printing form first_child()")
+
+    def second_child():
+        print("Printing from second_child()")
+
+    second_child()
+    first_child()
+    
+print(parent())
+
+'''
+Note that the order in which the inner functions are defined does not matter. Like with any other functions, the printing only happens when the inner functions are executed. 
+'''
